@@ -8,6 +8,7 @@ import { QUERIES, WEIGHTS } from '../../constants';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
+import {keyframes} from "styled-components";
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
@@ -36,6 +37,24 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
   );
 };
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`
+
+const slideId = keyframes`
+  from {
+    transform: translateX(300px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+`
+
 const Overlay = styled(DialogOverlay)`
   position: fixed;
   top: 0;
@@ -45,15 +64,21 @@ const Overlay = styled(DialogOverlay)`
   background: var(--color-backdrop);
   display: flex;
   justify-content: flex-end;
+
+  animation: ${fadeIn} 500ms;
 `;
 
 const Content = styled(DialogContent)`
+  position: absolute;
+  
   background: white;
   width: 300px;
   height: 100%;
   padding: 24px 32px;
   display: flex;
   flex-direction: column;
+
+  animation: ${slideId} 500ms;
 `;
 
 const CloseButton = styled(UnstyledButton)`
@@ -67,6 +92,8 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  animation: ${fadeIn} 500ms;
 `;
 
 const NavLink = styled.a`
@@ -90,6 +117,8 @@ const Footer = styled.footer`
   flex-direction: column;
   gap: 14px;
   justify-content: flex-end;
+
+  animation: ${fadeIn} 500ms;
 `;
 
 const SubLink = styled.a`

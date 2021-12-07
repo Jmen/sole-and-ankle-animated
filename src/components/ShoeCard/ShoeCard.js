@@ -75,13 +75,22 @@ const Link = styled.a`
 
 const Wrapper = styled.article``;
 
-const ImageWrapper = styled.div`
-  position: relative;
-`;
+
 
 const Image = styled.img`
   width: 100%;
+  
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
   border-radius: 16px 16px 4px 4px;
+  overflow: hidden;
+  
+  &:hover ${Image} {
+    perspective: 500px;
+    transform: scale(1.07);
+  }
 `;
 
 const Row = styled.div`
